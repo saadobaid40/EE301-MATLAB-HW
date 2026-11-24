@@ -1,0 +1,12 @@
+clear; clc; close all;
+t = linspace(0,4*pi,1001);
+a = abs(exp(2j*t)+exp(3j*t));
+b = 2*abs(cos(0.5*t));
+figure;
+plot(t,a,'LineWidth',1.5); hold on;
+plot(t,b,'--'); grid on;
+xlabel('Time (s)'); ylabel('Magnitude');
+legend('Complex expression','Cosine expression');
+title('Comparison of magnitudes');
+fprintf('Maximum error = %.3e\n',max(abs(a-b)));
+print(gcf,'M3_Complex_Magnitude','-dpng','-r300');

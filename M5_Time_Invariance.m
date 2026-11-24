@@ -1,0 +1,14 @@
+clear; clc; close all;
+t = -5:0.01:5;
+t0 = 1;
+x = cos(t);
+y = t.*x;
+y1 = t.*cos(t-t0);
+y2 = (t-t0).*cos(t-t0);
+figure;
+plot(t,y1,t,y2,'--'); grid on;
+xlabel('Time (s)'); ylabel('Output');
+legend('Shift input first','Shift output first');
+title('Time invariance test');
+fprintf('Maximum difference = %.6f\n',max(abs(y1-y2)));
+print(gcf,'M5_Time_Invariance','-dpng','-r300');

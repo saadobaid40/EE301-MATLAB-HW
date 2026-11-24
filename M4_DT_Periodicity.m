@@ -1,0 +1,16 @@
+clear; clc; close all;
+n = 0:60;
+x1 = cos(2*pi*n/12);
+x2 = cos(n/6);
+figure;
+subplot(2,1,1); stem(n,x1); grid on;
+xlabel('n'); ylabel('x_1[n]');
+title('cos(2\pi n/12)');
+subplot(2,1,2); stem(n,x2); grid on;
+xlabel('n'); ylabel('x_2[n]');
+title('cos(n/6)');
+err1 = max(abs(x1(13:end)-x1(1:end-12)));
+err2 = max(abs(x2(39:end)-x2(1:end-38)));
+fprintf('Error for N = 12: %.3e\n',err1);
+fprintf('Error for N = 38: %.3e\n',err2);
+print(gcf,'M4_DT_Periodicity','-dpng','-r300');

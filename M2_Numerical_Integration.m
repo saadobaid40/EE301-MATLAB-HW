@@ -1,0 +1,13 @@
+clear; clc; close all;
+t = 0:0.001:5;
+x = exp(-4*t);
+E = trapz(t,x);
+E_exact = 1/4;
+fprintf('Numerical integral = %.9f\n',E);
+fprintf('Exact integral = %.9f\n',E_exact);
+fprintf('Absolute error = %.3e\n',abs(E-E_exact));
+figure;
+area(t,x); grid on;
+xlabel('Time (s)'); ylabel('e^{-4t}');
+title('Area under the exponential');
+print(gcf,'M2_Numerical_Integration','-dpng','-r300');
